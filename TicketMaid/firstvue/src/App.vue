@@ -1,45 +1,3 @@
-<!--<template>-->
-<!--&lt;!&ndash;  <div id="app">&ndash;&gt;-->
-<!--&lt;!&ndash;    <img src="./assets/logo.png">&ndash;&gt;-->
-<!--&lt;!&ndash;    <router-view/>&ndash;&gt;-->
-<!--&lt;!&ndash;  </div>&ndash;&gt;-->
-<!--  <Carousel autoplay v-model="value2"  loop>&ndash;&gt;-->
-
-<!--                  <CarouselItem>-->
-<!--                    <div class="demo-carousel"></div>-->
-<!--                    <div >-->
-<!--                      <img src="./assets/logo.png" style="align-items: center">-->
-<!--                    </div>-->
-<!--                  </CarouselItem>-->
-<!--                  <CarouselItem>-->
-<!--                    <div class="demo-carousel">2</div>-->
-<!--                  </CarouselItem>-->
-<!--                  <CarouselItem>-->
-<!--                    <div class="demo-carousel">3</div>-->
-<!--                  </CarouselItem>-->
-<!--                  <CarouselItem>-->
-<!--                    <div class="demo-carousel">4</div>-->
-<!--                  </CarouselItem>-->
-<!--                </Carousel>-->
-<!--</template>-->
-
-<!--<script>-->
-<!--export default {-->
-<!--  name: 'App'-->
-<!--}-->
-<!--</script>-->
-
-<!--<style>-->
-<!--#app {-->
-<!--  font-family: 'Avenir', Helvetica, Arial, sans-serif;-->
-<!--  -webkit-font-smoothing: antialiased;-->
-<!--  -moz-osx-font-smoothing: grayscale;-->
-<!--  text-align: center;-->
-<!--  color: #2c3e50;-->
-<!--  margin-top: 60px;-->
-<!--}-->
-<!--</style>-->
-
 <template>
   <div class="layout">
     <Layout>
@@ -54,11 +12,11 @@
             </MenuItem>
           </div>
           <div class="layout-nav">
-<!--            <div style="backgroundColor:blue;width: 50px">头像</div>-->
-<!--            <div @click="submit(4)" style="backgroundColor:red ">-->
-<!--&lt;!&ndash;              <router-link to="/hellword?id=1212">跳转helloword页面</router-link>&ndash;&gt;-->
-<!--              跳转helloword页面-->
-<!--            </div>-->
+            <!--            <div style="backgroundColor:blue;width: 50px">头像</div>-->
+            <!--            <div @click="submit(4)" style="backgroundColor:red ">-->
+            <!--&lt;!&ndash;              <router-link to="/hellword?id=1212">跳转helloword页面</router-link>&ndash;&gt;-->
+            <!--              跳转helloword页面-->
+            <!--            </div>-->
             <MenuItem name="3">
               <div @click="toDetailPage()"v-bind:hidden="UserHidden">
                 <Icon type="ios-analytics"></Icon>
@@ -75,25 +33,25 @@
         </Menu>
       </Header>
       <Content :style="{padding: '0 50px'}">
-          <Modal v-model="modal2" width="400">
-            <p slot="header" style="text-align:center">
-              <span>Login</span>
-            </p>
-            <div style="text-align:center">
-              <Input suffix="ios-contact" placeholder="Enter name" style="width: 300px" size="large" v-model="username"/>
-              <br></br>
-              <Input  type="password" password placeholder="Enter something..." style="width: 300px" size="large" v-model="password"/>
-<!--              <br></br>-->
-              <div style="text-align: left;margin-left: 35px;margin-top: 5px;color:#ff4500" v-bind:hidden="messageDisplay">
+        <Modal v-model="modal2" width="400">
+          <p slot="header" style="text-align:center">
+            <span>Login</span>
+          </p>
+          <div style="text-align:center">
+            <Input suffix="ios-contact" placeholder="Enter name" style="width: 300px" size="large" v-model="username"/>
+            <br></br>
+            <Input  type="password" password placeholder="Enter something..." style="width: 300px" size="large" v-model="password"/>
+            <!--              <br></br>-->
+            <div style="text-align: left;margin-left: 35px;margin-top: 5px;color:#ff4500" v-bind:hidden="messageDisplay">
               {{message}}
             </div>
-            </div>
-            <div slot="footer">
-              <Button type="primary" size="large" long :loading="modal_loading" @click="login()">Login</Button>
-              <br></br>
-              <Button long  size="large" @click="modal3=true" >Register</Button>
-            </div>
-          </Modal>
+          </div>
+          <div slot="footer">
+            <Button type="primary" size="large" long :loading="modal_loading" @click="login()">Login</Button>
+            <br></br>
+            <Button long  size="large" @click="modal3=true" >Register</Button>
+          </div>
+        </Modal>
 
         <Modal v-model="modal3" width="400">
           <p slot="header" style="text-align:center">
@@ -112,20 +70,24 @@
             <Button type="primary" size="large" long :loading="modal_loading" @click="register()">Register</Button>
           </div>
         </Modal>
-<keep-alive>
-        <router-view></router-view>
-</keep-alive>
+
+
+        <keep-alive >
+          <router-view v-if="$route.meta.keepalive"></router-view>
+        </keep-alive>
+        <router-view v-if="!$route.meta.keepalive"></router-view>
+
       </Content>
       <Footer class="layout-footer-center">2020-2020 &copy; Ticket Maid</Footer>
     </Layout>
 
-<!--    <div>-->
-<!--&lt;!&ndash;      我是APP的下面内容&ndash;&gt;-->
-<!--&lt;!&ndash;     <keep-alive>&ndash;&gt;-->
-<!--&lt;!&ndash;        <router-view></router-view>&ndash;&gt;-->
-<!--&lt;!&ndash;     </keep-alive>&ndash;&gt;-->
-<!--&lt;!&ndash;<BIM></BIM>&ndash;&gt;-->
-<!--    </div>-->
+    <!--    <div>-->
+    <!--&lt;!&ndash;      我是APP的下面内容&ndash;&gt;-->
+    <!--&lt;!&ndash;     <keep-alive>&ndash;&gt;-->
+    <!--&lt;!&ndash;        <router-view></router-view>&ndash;&gt;-->
+    <!--&lt;!&ndash;     </keep-alive>&ndash;&gt;-->
+    <!--&lt;!&ndash;<BIM></BIM>&ndash;&gt;-->
+    <!--    </div>-->
   </div>
 
 </template>
@@ -171,8 +133,13 @@
         //成功
         this.ajax(
         )
+        console.log('首页',this.$router)
+        // this.$router.back()
         this.$router.push({name: 'MainPage', params: {userId: 123}})
       },
+
+
+
       toHello() {
         this.$router.push({name: 'HelloWorld', params: {userId: 123}})
       },
@@ -186,22 +153,22 @@
       }
       ,
       login() {
-          this.messageDisplay = true;
-          if (this.username == '' || this.password == '') {
-           this.message = '请输入用户名或密码';
-            this.messageDisplay = false;
-         }
-          else {
-            this.modal_loading = true;
-            setTimeout(() => {
-              this.modal_loading = false;
-              this.modal2 = false;
-              this.loginHidden = true;
-              this.$Message.success('Successfully login');
-              this.UserHidden = false;
-              this.loginmessage = this.username;
-            }, 2000);
-          }
+        this.messageDisplay = true;
+        if (this.username == '' || this.password == '') {
+          this.message = '请输入用户名或密码';
+          this.messageDisplay = false;
+        }
+        else {
+          this.modal_loading = true;
+          setTimeout(() => {
+            this.modal_loading = false;
+            this.modal2 = false;
+            this.loginHidden = true;
+            this.$Message.success('Successfully login');
+            this.UserHidden = false;
+            this.loginmessage = this.username;
+          }, 2000);
+        }
       },
       register() {
         this.messageDisplay = true;

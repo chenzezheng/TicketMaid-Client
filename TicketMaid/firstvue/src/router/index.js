@@ -11,23 +11,36 @@ export default new Router({
   routes: [
     {
       path: '/hellword',
-     // name: 'HelloWorld',
+      // name: 'HelloWorld',
       name:'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+      meta:{
+        keepalive:false,
+      }
     },
     {
       path:'/B',
-      component: B
+      component: B,
+      meta:{
+        keepalive:false,
+      }
     },
     {
       path:'/',
       name:'MainPage',
-      component: MainPage
+      component: MainPage,
+      meta:{
+        keepalive:true,
+      }
+
     },
     {
       path:'/DetailPage',
       name:'DetailPage',
-      component: DetailPage
+      component: DetailPage,
+      meta:{
+        keepalive:false,
+      }
     }
   ]
 })
