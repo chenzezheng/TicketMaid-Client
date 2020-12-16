@@ -17,8 +17,8 @@
             <!--&lt;!&ndash;              <router-link to="/hellword?id=1212">跳转helloword页面</router-link>&ndash;&gt;-->
             <!--              跳转helloword页面-->
             <!--            </div>-->
-            <MenuItem name="3">
-              <div @click="toDetailPage()"v-bind:hidden="UserHidden">
+            <MenuItem name="3" >
+              <div v-bind:hidden="UserHidden"  @click="UserNav()">
                 <Icon type="ios-analytics"></Icon>
                 个人中心
               </div>
@@ -95,6 +95,7 @@
 
 <script type="text/javascript">
   import BIM from '@/components/B';
+  import UserNav from "./components/UserNav";
 
 
   export default {
@@ -138,14 +139,9 @@
         this.$router.push({name: 'MainPage', params: {userId: 123}})
       },
 
-
-
-      toHello() {
-        this.$router.push({name: 'HelloWorld', params: {userId: 123}})
-      },
-      toDetailPage() {
-        this.$router.push({name: 'DetailPage', params: {userId: 123}})
-      },
+      // toDetailPage() {
+      //   this.$router.push({name: 'DetailPage', params: {userId: 123}})
+      // },
       showlogin()
       {
         if(this.UserHidden)
@@ -185,7 +181,10 @@
           }, 2000);
         }
       },
-
+      UserNav(){
+        this.$router.push({name:'UserNav'});
+        console.log(aaaaaaaa);
+      },
       components: {
         BIM
       },
